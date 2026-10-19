@@ -182,15 +182,15 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .hired { padding: 40px 0 64px; }
 .hired-title { text-align: center; font: 600 clamp(1.05rem, 1.6vw, 1.25rem)/1.3 var(--f-head); letter-spacing: -.01em; color: var(--ivory); margin-bottom: 26px; }
 .marquee { overflow: hidden; border-block: 1px solid var(--line-dark); -webkit-mask-image: linear-gradient(90deg, transparent, var(--ink) 10%, var(--ink) 90%, transparent); mask-image: linear-gradient(90deg, transparent, var(--ink) 10%, var(--ink) 90%, transparent); }
-.track { display: flex; width: max-content; animation: slide 38s linear infinite; }
-.marquee:hover .track, .marquee:focus-within .track { animation-play-state: paused; }
+.track { display: flex; width: max-content; animation: slide 60s linear infinite; will-change: transform; }
+.grp { display: flex; flex: none; }
 @keyframes slide { to { transform: translateX(-50%); } }
 .logo-slot { display: flex; align-items: center; gap: 14px; padding: 26px 44px; font: 600 clamp(1.05rem, 1.8vw, 1.35rem)/1 var(--f-head); color: var(--stone); letter-spacing: -.01em; white-space: nowrap; transition: color .3s; }
 .logo-slot::before { content: ""; width: 10px; height: 10px; border-radius: 50%; border: 1px solid color-mix(in srgb, var(--stone) 45%, transparent); }
 .logo-slot:hover { color: var(--ivory); }
 
 /* ===== Stories grid ===== */
-.stories { padding: clamp(80px, 11vw, 140px) 0 clamp(80px, 10vw, 120px); }
+.stories { padding: clamp(80px, 11vw, 140px) 0 clamp(28px, 3.5vw, 48px); }
 .stories-head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
 .stories h2 { font-size: clamp(2rem, 4.2vw, 3.3rem); line-height: 1.05; }
 .stories-head p { color: var(--on-dark-soft); margin-top: 14px; }
@@ -210,9 +210,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .yt-link { display: inline-block; margin-top: 10px; font-size: .82rem; color: var(--stone); opacity: .75; }
 .stories-note { text-align: center; margin-top: 44px; color: color-mix(in srgb, var(--stone) 70%, transparent); }
 /* ===== The 1% ===== */
-.one { position: relative; height: 340vh; }
-.one-sticky { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; overflow: hidden; background: var(--ink); }
-.one-sticky::after { content: ""; position: absolute; inset: auto 0 0; height: 30%; background: linear-gradient(to bottom, rgba(7,13,25,0), var(--ink)); pointer-events: none; }
+.one { position: relative; height: 340vh; background: color-mix(in srgb, var(--ivory) 4.5%, var(--ink)); border-top: 1px solid var(--line-dark); }
+.one-sticky { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; overflow: hidden; padding-bottom: 18vh; background: color-mix(in srgb, var(--ivory) 4.5%, var(--ink)); }
 .one-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 96px); align-items: center; }
 .one h2 { font-size: clamp(2.42rem, 5.06vw, 4.18rem); line-height: 1.02; }
 .one h2 em { font-size: 1.29em; }
@@ -223,7 +222,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .one-points p { color: var(--stone); font-size: .95rem; margin-top: 4px; }
 .dots-fig { margin: 0; justify-self: end; width: min(100%, 470px); }
 .dots { position: relative; display: grid; grid-template-columns: repeat(10, 1fr); gap: clamp(8px, 1.1vw, 13px); }
-.dot { aspect-ratio: 1; border-radius: 50%; background: color-mix(in srgb, var(--stone) 16%, var(--ink)); transition: opacity .5s var(--ease), transform .5s var(--ease), background-color .5s; }
+.dot { aspect-ratio: 1; border-radius: 50%; background: color-mix(in srgb, var(--stone) 18%, var(--ink)); transition: opacity .5s var(--ease), transform .5s var(--ease), background-color .5s; }
 .dot:hover { background: color-mix(in srgb, var(--stone) 34%, var(--ink)); transform: scale(1.12); }
 .dot.dim { opacity: .28; transform: scale(.82); }
 .dot.lit { position: relative; z-index: 2; background: var(--brass-light); opacity: 1; transform: scale(1.12); box-shadow: 0 0 8px 2px rgba(201,168,106,.7), 0 0 22px 6px rgba(168,134,79,.5), 0 0 48px 14px rgba(168,134,79,.28); animation: meGlow 2.8s ease-in-out infinite; }
@@ -237,9 +236,17 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .paths { padding: clamp(90px, 11vw, 150px) 0; }
 .paths-head { display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap; margin-bottom: 48px; }
 .paths h2 { font-size: clamp(2.2rem, 4.6vw, 3.8rem); line-height: 1.02; max-width: 12ch; }
-.chooser { display: inline-flex; padding: 5px; border-radius: 999px; border: 1px solid var(--paper-line); }
-.chooser button { border: 0; background: transparent; color: var(--paper-muted); font: 500 .92rem/1 var(--f-body); padding: 13px 18px; border-radius: 999px; cursor: pointer; transition: background-color .35s var(--ease), color .35s; }
-.chooser button[aria-pressed="true"] { background: var(--paper-ink); color: var(--paper); }
+.chooser-wrap { display: grid; justify-items: end; gap: 12px; }
+.chooser-hint { display: inline-flex; align-items: center; gap: 8px; font: 600 .86rem/1 var(--f-head); letter-spacing: -.005em; color: var(--paper-accent); transition: opacity .5s var(--ease); }
+.chooser-hint::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; animation: blink 1.6s ease-in-out infinite; }
+.chooser-wrap.chosen .chooser-hint { opacity: 0; }
+.chooser { position: relative; display: inline-flex; padding: 5px; border-radius: 999px; background: var(--paper-ink); box-shadow: 0 18px 34px -16px rgba(7,13,25,.55); }
+.chooser::before, .chooser::after { content: ""; position: absolute; inset: -1px; border-radius: inherit; border: 1.5px solid var(--brass); opacity: 0; pointer-events: none; animation: halo 2.8s var(--ease) infinite; }
+.chooser::after { animation-delay: 1.4s; }
+.chooser-wrap.chosen .chooser::before, .chooser-wrap.chosen .chooser::after { display: none; }
+.chooser button { border: 0; background: transparent; color: color-mix(in srgb, var(--paper) 90%, transparent); font: 600 .92rem/1 var(--f-body); padding: 13px 18px; border-radius: 999px; cursor: pointer; transition: background-color .35s var(--ease), color .35s; }
+.chooser button:hover { background: color-mix(in srgb, var(--paper) 14%, transparent); }
+.chooser button[aria-pressed="true"] { background: var(--brass); color: var(--ink); }
 .cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; align-items: stretch; padding: 14px 0; }
 .card { --rx: 0deg; --ry: 0deg; --ty: 0px; --s: 1; position: relative; border-radius: 26px; padding: clamp(28px, 3.4vw, 46px); display: flex; flex-direction: column; gap: 22px; cursor: pointer; transform: perspective(1200px) translateY(var(--ty)) scale(var(--s)) rotateX(var(--rx)) rotateY(var(--ry)); transition: opacity .5s var(--ease), transform .6s var(--ease), box-shadow .6s var(--ease); }
 .card.k4 { background: var(--ink); color: var(--ivory); border: 1px solid var(--line-dark); box-shadow: 0 30px 60px -36px rgba(7,13,25,.7); overflow: hidden; }
@@ -577,6 +584,7 @@ fieldset.field { border: 0; margin: 0 0 18px; padding: 0; }
   .vsl-cap { flex-direction: column; gap: 6px; }
   .play, .vsl .play { width: 68px; height: 68px; margin: -34px 0 0 -34px; }
   .rings { width: 110vw; right: -50vw; top: -2%; }
+  .chooser-wrap { width: 100%; justify-items: stretch; }
   .chooser { width: 100%; }
   .chooser button { flex: 1; padding: 13px 10px; font-size: .86rem; }
   .seg { grid-template-columns: 1fr; }
@@ -587,12 +595,14 @@ fieldset.field { border: 0; margin: 0 0 18px; padding: 0; }
   html { scroll-behavior: auto; }
   .reveal { animation: none; opacity: 1; transform: none; }
   .rings circle { animation: none; stroke-dashoffset: 0; }
-  .track { animation: none; flex-wrap: wrap; width: 100%; justify-content: center; }
+  .track { animation: none; width: 100%; }
+  .grp { flex-wrap: wrap; justify-content: center; width: 100%; }
   .track [aria-hidden] { display: none; }
   .apply-rings .close { transition: none; stroke-dashoffset: 0; }
   .col, .you-dot, .you-ring .prg { transition: none; }
   .col svg circle { stroke-dashoffset: 0; animation: none !important; }
   .you-wave { display: none; }
+  .chooser::before, .chooser::after, .chooser-hint::before { animation: none; }
   .you-dot.me, .dot.lit { animation: none; }
   .out { animation: none; }
   .card, .dot, .btn, .video img { transition: none; }
@@ -670,16 +680,50 @@ fieldset.field { border: 0; margin: 0 0 18px; padding: 0; }
   <h2 class="hired-title" id="hiredTitle">Offers that have hired our students</h2>
   <div class="marquee" tabindex="0" aria-label="Companies that have hired TMSC students">
     <div class="track">
-      <span class="logo-slot">The Muslim Method</span>
-      <span class="logo-slot">IMA</span>
-      <span class="logo-slot">The Cave</span>
-      <span class="logo-slot">Al-Adabillah</span>
-      <span class="logo-slot">Muslimpreneur</span>
-      <span class="logo-slot" aria-hidden="true">The Muslim Method</span>
-      <span class="logo-slot" aria-hidden="true">IMA</span>
-      <span class="logo-slot" aria-hidden="true">The Cave</span>
-      <span class="logo-slot" aria-hidden="true">Al-Adabillah</span>
-      <span class="logo-slot" aria-hidden="true">Muslimpreneur</span>
+      <div class="grp">
+        <span class="logo-slot">The Muslim Method</span>
+        <span class="logo-slot">IMA</span>
+        <span class="logo-slot">The Cave</span>
+        <span class="logo-slot">Al-Adabillah</span>
+        <span class="logo-slot">Muslimpreneur</span>
+        <span class="logo-slot" aria-hidden="true">The Muslim Method</span>
+        <span class="logo-slot" aria-hidden="true">IMA</span>
+        <span class="logo-slot" aria-hidden="true">The Cave</span>
+        <span class="logo-slot" aria-hidden="true">Al-Adabillah</span>
+        <span class="logo-slot" aria-hidden="true">Muslimpreneur</span>
+        <span class="logo-slot" aria-hidden="true">The Muslim Method</span>
+        <span class="logo-slot" aria-hidden="true">IMA</span>
+        <span class="logo-slot" aria-hidden="true">The Cave</span>
+        <span class="logo-slot" aria-hidden="true">Al-Adabillah</span>
+        <span class="logo-slot" aria-hidden="true">Muslimpreneur</span>
+        <span class="logo-slot" aria-hidden="true">The Muslim Method</span>
+        <span class="logo-slot" aria-hidden="true">IMA</span>
+        <span class="logo-slot" aria-hidden="true">The Cave</span>
+        <span class="logo-slot" aria-hidden="true">Al-Adabillah</span>
+        <span class="logo-slot" aria-hidden="true">Muslimpreneur</span>
+      </div>
+      <div class="grp" aria-hidden="true">
+        <span class="logo-slot" aria-hidden="true">The Muslim Method</span>
+        <span class="logo-slot" aria-hidden="true">IMA</span>
+        <span class="logo-slot" aria-hidden="true">The Cave</span>
+        <span class="logo-slot" aria-hidden="true">Al-Adabillah</span>
+        <span class="logo-slot" aria-hidden="true">Muslimpreneur</span>
+        <span class="logo-slot" aria-hidden="true">The Muslim Method</span>
+        <span class="logo-slot" aria-hidden="true">IMA</span>
+        <span class="logo-slot" aria-hidden="true">The Cave</span>
+        <span class="logo-slot" aria-hidden="true">Al-Adabillah</span>
+        <span class="logo-slot" aria-hidden="true">Muslimpreneur</span>
+        <span class="logo-slot" aria-hidden="true">The Muslim Method</span>
+        <span class="logo-slot" aria-hidden="true">IMA</span>
+        <span class="logo-slot" aria-hidden="true">The Cave</span>
+        <span class="logo-slot" aria-hidden="true">Al-Adabillah</span>
+        <span class="logo-slot" aria-hidden="true">Muslimpreneur</span>
+        <span class="logo-slot" aria-hidden="true">The Muslim Method</span>
+        <span class="logo-slot" aria-hidden="true">IMA</span>
+        <span class="logo-slot" aria-hidden="true">The Cave</span>
+        <span class="logo-slot" aria-hidden="true">Al-Adabillah</span>
+        <span class="logo-slot" aria-hidden="true">Muslimpreneur</span>
+      </div>
     </div>
   </div>
 </section>
@@ -762,9 +806,12 @@ fieldset.field { border: 0; margin: 0 0 18px; padding: 0; }
   <div class="wrap">
     <div class="paths-head">
       <h2 id="pathsTitle">Two paths. One <em>standard</em>.</h2>
-      <div class="chooser" role="group" aria-label="Which describes you?">
-        <button type="button" data-pick="k4" aria-pressed="false">I’m already in sales</button>
-        <button type="button" data-pick="k3" aria-pressed="false">I’m new to sales</button>
+      <div class="chooser-wrap" id="chooserWrap">
+        <span class="chooser-hint" aria-hidden="true">Which one are you?</span>
+        <div class="chooser" role="group" aria-label="Which describes you?">
+          <button type="button" data-pick="k4" aria-pressed="false">I’m already in sales</button>
+          <button type="button" data-pick="k3" aria-pressed="false">I’m new to sales</button>
+        </div>
       </div>
     </div>
 
@@ -1292,6 +1339,7 @@ fieldset.field { border: 0; margin: 0 0 18px; padding: 0; }
     cards.dataset.pick = cur; $('#paths').dataset.pick = cur;
     pickBtns.forEach(b => b.setAttribute('aria-pressed', b.dataset.pick === cur));
     cards.classList.toggle('picked', !!cur);
+    if (cur) $('#chooserWrap').classList.add('chosen');
     cardEls.forEach(c => { const on = c.dataset.card === cur; c.classList.toggle('on', on); c.setAttribute('aria-pressed', on); });
   };
   pickBtns.forEach(b => b.addEventListener('click', () => choose(b.dataset.pick)));
