@@ -132,6 +132,8 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .tag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--brass); }
 .hero h1 { font-size: clamp(2.5rem, 6.4vw, 5.2rem); line-height: 1.02; margin: 28px auto 0; max-width: 15ch; color: var(--ivory); }
 .hero .sub { margin: 26px auto 0; max-width: 58ch; color: var(--on-dark-soft); font-size: clamp(1rem, 1.35vw, 1.12rem); }
+.hero .sub.lead { max-width: 900px; }
+.hero .sub.lead span { display: block; text-wrap: pretty; }
 .hero .sub-line { display: inline-block; text-align: left; margin-top: 18px; padding-left: 16px; border-left: 1px solid var(--brass); max-width: 52ch; }
 .hero .cta { display: flex; gap: 12px; justify-content: center; margin-top: 34px; flex-wrap: wrap; }
 .reveal { opacity: 0; transform: translateY(26px); animation: rise .9s var(--ease) forwards; animation-delay: calc(var(--i) * .12s + .15s); }
@@ -664,7 +666,7 @@ fieldset.field { border: 0; margin: 0 0 18px; padding: 0; }
   <div class="wrap hero-copy" id="heroCopy">
     <p class="tag reveal" style="--i:0">For brothers only</p>
     <h1 class="reveal" style="--i:1">Earn <em>more</em> from the offer you’re already on.</h1>
-    <p class="sub reveal" style="--i:2">Sales and appointment-setting mentorship for brothers, led by Mousa Beaumont, a 7-figure sales coach with experience at one of the most successful Muslim programmes.</p>
+    <p class="sub lead reveal" style="--i:2"><span>Sales and appointment-setting mentorship for brothers, led by Mousa Beaumont,</span> <span>a&nbsp;7-figure sales coach with experience at one of the most successful Muslim programmes.</span></p>
     <p class="sub sub-line reveal" style="--i:3">New to sales? Land a role within 90 days, or we work with you until you do.</p>
     <div class="cta reveal" style="--i:4">
       <a class="btn btn-brass" href="#apply">Apply</a>
