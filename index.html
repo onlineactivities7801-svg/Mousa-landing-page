@@ -1,4 +1,4 @@
- <!doctype html>
+<!doctype html>
 <html lang="en" data-embed="true">
 <head>
 <meta charset="utf-8">
@@ -223,8 +223,9 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .watch b { font: 600 .98rem/1.1 var(--f-head); }
 .watch small { font: 400 .82rem/1 var(--f-body); opacity: .85; }
 .story .video:hover .watch { background: var(--brass); color: var(--ink); transform: translate(-50%, -50%) scale(1.04); }
-.story h3 { margin-top: 22px; font-size: 1.25rem; letter-spacing: -.015em; }
-.story .result { margin-top: 6px; color: var(--brass); font-size: .95rem; }
+.story h3 { margin-top: 22px; font-size: clamp(1.45rem, 2.1vw, 1.8rem); font-weight: 800; letter-spacing: -.02em; }
+.story .result { margin: 8px auto 0; max-width: 30ch; min-height: 2.8em; font: 600 clamp(.95rem, 1.3vw, 1.1rem)/1.4 var(--f-head); letter-spacing: -.01em; text-wrap: balance; color: var(--brass-light); text-shadow: 0 0 22px rgba(201,168,106,.38), 0 0 2px rgba(201,168,106,.25); transition: text-shadow .5s var(--ease), color .5s; }
+.story:hover .result { text-shadow: 0 0 28px rgba(201,168,106,.6), 0 0 3px rgba(201,168,106,.35); color: var(--ivory); }
 .story .chip { margin-top: 12px; color: var(--stone); }
 .yt-link { display: inline-block; margin-top: 10px; font-size: .82rem; color: var(--stone); opacity: .75; }
 .stories-note { text-align: center; margin-top: 44px; color: color-mix(in srgb, var(--stone) 70%, transparent); }
